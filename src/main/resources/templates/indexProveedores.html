@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Papelería</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" th:href="@{/listar}">Usuarios</a>
+      <a class="nav-item nav-link active" th:href="@{/listarClientes}">Clientes</a>
+      <a class="nav-item nav-link active" th:href="@{/listarProductos}">Productos</a>
+      <a class="nav-item nav-link active" th:href="@{/listarProveedores}">Proveedores</a>
+    </div>
+  </div>
+</nav>
+		<div class="container mt=4">
+		<a th:href="@{/newProveedor}" class="btn btn-primary" style="margin:20px;">Nuevo Proveedor</a>
+		
+			<table class="table table-dark table-hover">
+				<thead>
+					<tr>
+						<th>NIT</th>
+						<th>Nombre</th>
+						<th>Ciudad</th>
+						<th>Telefono</th>
+						<th>Dirección</th>
+						<th>ACCIÓN</th>
+						<th>ACCIÓN</th>
+					</tr>
+				</thead>
+				<tbody>
+		  			<tr th:each="p:${proveedores}">
+						<td th:text="${p.NIT}"></td> 
+						<td th:text="${p.Nombre}"></td>
+						<td th:text="${p.Ciudad}"></td>
+						<td th:text="${p.Telefono}"></td>
+						<td th:text="${p.Direccion}"></td>
+						<td>
+						<a th:href="@{/editarProveedor/}+${p.NIT}"  class="btn btn-warning" >Editar</a>
+						</td>
+						<td>
+						<a th:href="@{/eliminarProveedor/}+${p.NIT}"  class="btn btn-danger">Eliminar</a>
+						</td>
+					</tr>
+				</tbody>
+			
+
+			</table>
+		</div>
+</body>
+</html>
+
+
+
+
